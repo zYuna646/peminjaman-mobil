@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Auth\Events\Logout;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class SessionController extends Controller
 {
@@ -14,29 +17,36 @@ class SessionController extends Controller
 
     public function login(Request $request)
     {
+        Session::flash('email', $request->email);
         $request->validate([
             'email' => 'required',
             'password' => 'required',
-        ], [
-            'email.required' => 'Email Atau Username Wajib Diisi',
-            'password.required' => 'Password Wajib Diisi',
-        ]);
-    
-        $loginSession = [
-            'email' => $request->input('email'),
-            'password' => $request->input('password'), // Benarkan pengejaan "password"
-        ];
-    
-        if (Auth::attempt($loginSession)) {
-            return "sukses";
+        ], );
+
+        $emailOrUsername = $request->input('email');
+        $password = $request->input('password');
+
+        if (strpos($emailOrUsername, '@') !== false) {
+            $credentials = ['email' => $emailOrUsername, 'password' => $password];
         } else {
-            return "gagal";
+            $credentials = ['username' => $emailOrUsername, 'password' => $password];
+        }
+
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('dashboard');
+        } else {
+            $user = User::where('email', $emailOrUsername)->first();
+            $errorMessage = strpos($emailOrUsername, '@') !== false ? 'Email Yang Dimasukkan Tidak Valid' : 'Username Yang Dimasukkan Tidak Valid';
+            $errorMessage = $user ? 'Password Yang Dimasukkan Tidak Valid' : $errorMessage;
+            return redirect('auth')->withErrors($errorMessage);
         }
     }
 
+
     function logout()
     {
-
+        Auth::Logout();
+        return redirect('sesi')->with('success', 'Berhasil Logout');
     }
 
     function forget()

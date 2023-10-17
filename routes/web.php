@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,12 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin');
-});
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 
 Route::get('/auth',[SessionController::class, 'index']);
 Route::post('/auth/login',[SessionController::class, 'login'])->name('login');
+Route::post('/auth/logout',[SessionController::class, 'logout'])->name('logout');
 Route::post('/auth/forget',[SessionController::class, 'forget'])->name('forget');
 

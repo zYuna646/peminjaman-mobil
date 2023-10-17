@@ -19,9 +19,12 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
+        'role', 
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -38,8 +41,10 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
-    protected $casts = [
+     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'role' => 'string', 
+        'username' => 'string'
     ];
 }
