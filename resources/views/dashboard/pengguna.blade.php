@@ -47,14 +47,10 @@
 </head>
 
 <body>
-  
-    <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar">
-        <div class="layout-container">
-            <!-- Menu -->
-            @yield('aside')
-            <!-- / Menu -->
 
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar layout-without-menu">
+        <div class="layout-container">
             <!-- Layout container -->
             <div class="layout-page">
                 <!-- Navbar -->
@@ -68,8 +64,29 @@
                     </div>
 
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
+                                    data-bs-target="#navs-tab-home" aria-controls="navs-tab-home" aria-selected="true">
+                                    Home
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                                    data-bs-target="#navs-tab-profile" aria-controls="navs-tab-profile"
+                                    aria-selected="false">
+                                    Peminjaman
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                                    data-bs-target="#navs-tab-peminjam" aria-controls="navs-tab-peminjam"
+                                    aria-selected="false">
+                                    Riwayat Peminjaman
+                                </button>
+                            </li>
+                        </ul>
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
-
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                 <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);"
@@ -115,7 +132,7 @@
                                         <div class="dropdown-divider my-1"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="{{route('logout')}}">
+                                        <a class="dropdown-item" href="{{ route('logout') }}">
                                             <i class="mdi mdi-power me-1 mdi-20px"></i>
                                             <span class="align-middle">Log Out</span>
                                         </a>
@@ -131,9 +148,17 @@
 
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
+                    <!-- Content -->
 
+                    <div class="container-xxl flex-grow-1 container-p-y">
+                        <!-- Layout Demo -->
+                        @yield('content')
+                        <!--/ Layout Demo -->
+                    </div>
                     <!-- / Content -->
-                    @yield('content')
+
+                    <!-- Footer -->
+        
                     <!-- / Footer -->
 
                     <div class="content-backdrop fade"></div>
@@ -142,9 +167,6 @@
             </div>
             <!-- / Layout page -->
         </div>
-
-        <!-- Overlay -->
-        <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
 
