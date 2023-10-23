@@ -2,7 +2,7 @@
 @section('title', 'Mobil')
 
 @section('aside')
-    <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+      <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
         <div class="app-brand demo">
             <a href="" class="app-brand-link">
                 <span class="app-brand-text demo menu-text fw-semibold ">Peminjaman Mobil</span>
@@ -56,12 +56,12 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="auth-register-basic.html" class="menu-link" target="_blank">
+                        <a href="{{ route('peminjaman.index') }}" class="menu-link">
                             <div data-i18n="Basic">Peminjaman Mobil</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="auth-forgot-password-basic.html" class="menu-link" target="_blank">
+                        <a href="{{ route('peminjaman.riwayat') }}" class="menu-link">
                             <div data-i18n="Basic">Riwayat Peminjaman</div>
                         </a>
                     </li>
@@ -145,7 +145,7 @@
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title" id="modalCenterTitle">Hapus Pengguna</h4>
+                                                        <h4 class="modal-title" id="modalCenterTitle">Hapus Mobil</h4>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>

@@ -30,12 +30,13 @@ Route::middleware(['signin'])->group(function () {
     Route::post('/mobil/create', [MobilController::class, 'create'])->name('mobil.create');
     Route::delete('/mobil/delete/{id}', [MobilController::class, 'delete'])->name('mobil.delete');
     Route::put('/mobil/{id}/update', [MobilController::class, 'update'])->name('mobil.update');
+
+    Route::put('/peminjaman/{id}/ditolak', [PeminjamanController::class, 'ditolak'])->name('peminjaman.ditolak');
+    Route::put('/peminjaman/{id}/diterima', [PeminjamanController::class, 'diterima'])->name('peminjaman.diterima');
     
-    Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('mobil.peminjaman');
-    Route::post('/peminjaman/create', [PeminjamanController::class, 'create'])->name('mobil.create');
-
-    Route::get('/riwayat', [PeminjamanController::class, 'riwayat'])->name('mobil.riwayat');
-
+    Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman.index');
+    Route::post('/peminjaman/create', [PeminjamanController::class, 'create'])->name('peminjaman.create');
+    Route::get('/peminjaman/riwayat', [PeminjamanController::class, 'riwayat'])->name('peminjaman.riwayat');
 
     Route::get('/auth/logout', [SessionController::class, 'logout'])->name('logout');
 });

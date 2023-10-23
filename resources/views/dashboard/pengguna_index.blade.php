@@ -38,7 +38,7 @@
                             <small class="text-muted float-end">Form Peminjaman</small>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ route('mobil.create') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('peminjaman.create') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" for="basic-default-phone">Mobil</label>
@@ -55,7 +55,8 @@
                                     <label class="col-sm-2 col-form-label" for="basic-default-phone">Durasi
                                         Peminjaman</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="date" id="html5-date-input" name="durasi_peminjaman" required />
+                                        <input class="form-control" type="date" id="html5-date-input"
+                                            name="durasi_peminjaman" required />
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -63,7 +64,8 @@
                                     <div class="col-sm-10">
                                         <div class="mb-3">
                                             <label for="formFile" class="form-label">Surat LDP .pdf , .jpg</label>
-                                            <input class="form-control" type="file" id="formFile" required name="surat_ldp" />
+                                            <input class="form-control" type="file" id="formFile" required
+                                                name="surat_ldp" />
                                         </div>
                                     </div>
                                 </div>
@@ -122,132 +124,42 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
+                            @php
+                                $i = 1;
+                            @endphp
+                            @foreach ($riwayat as $history)
+                                <tr
+                                    class="{{ $history->status === 'diproses' ? 'table-secondary' : ($history->status === 'diterima' ? 'table-success' : 'table-danger') }}">
+                                    <td>
+                                        {{ $i }}
+                                    </td>
+                                    <td>{{ App\Models\Mobil::find($history->mobil_id)->plat_nomor }}</td>
+                                    <td>
+                                        {{ $history->awal_peminjaman }}
+                                    </td>
+                                    <td>{{ $history->akhir_peminjaman }}</td>
+                                    <td><span
+                                            class="badge rounded-pill bg-label-{{ $history->status === 'diproses' ? 'secondary' : ($history->status === 'diterima' ? 'success' : 'danger') }} me-1">{{ $history->status }}</span>
+                                    </td>
 
-                            <tr class="table-secondary">
-                                <td>
-                                    <i class="mdi mdi-greenhouse mdi-20px text-success me-3"></i><span
-                                        class="fw-medium">Greenhouse Project</span>
-                                </td>
-                                <td>Trevor Baker</td>
-                                <td>
-                                    <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                            class="avatar avatar-xs pull-up" title="Lilian Fuller">
-                                            <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                                        </li>
-                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                            class="avatar avatar-xs pull-up" title="Sophia Wilkerson">
-                                            <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                                        </li>
-                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                            class="avatar avatar-xs pull-up" title="Christina Parker">
-                                            <img src="../assets/img/avatars/7.png" alt="Avatar"
-                                                class="rounded-circle" />
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td><span class="badge rounded-pill bg-label-secondary me-1">Scheduled</span></td>
-                                <td>ini</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="mdi mdi-dots-vertical"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="mdi mdi-pencil-outline me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                data-bs-toggle="dropdown">
+                                                <i class="mdi mdi-dots-vertical"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="javascript:void(0);"><i
+                                                        class="mdi mdi-pencil-outline me-1"></i> Detail</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="table-success">
-                                <td>
-                                    <i class="mdi mdi-bank mdi-20px text-primary me-3"></i><span class="fw-medium">Bank
-                                        Project</span>
-                                </td>
-                                <td>Jerry Milton</td>
-                                <td>
-                                    <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                            class="avatar avatar-xs pull-up" title="Lilian Fuller">
-                                            <img src="../assets/img/avatars/5.png" alt="Avatar"
-                                                class="rounded-circle" />
-                                        </li>
-                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                            class="avatar avatar-xs pull-up" title="Sophia Wilkerson">
-                                            <img src="../assets/img/avatars/6.png" alt="Avatar"
-                                                class="rounded-circle" />
-                                        </li>
-                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                            class="avatar avatar-xs pull-up" title="Christina Parker">
-                                            <img src="../assets/img/avatars/7.png" alt="Avatar"
-                                                class="rounded-circle" />
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td><span class="badge rounded-pill bg-label-success me-1">Pending</span></td>
-                                <td>ini</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="mdi mdi-dots-vertical"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="mdi mdi-pencil-outline me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="table-danger">
-                                <td>
-                                    <i class="mdi mdi-palette mdi-20px text-danger me-3"></i><span class="fw-medium">UI/UX
-                                        Project</span>
-                                </td>
-                                <td>Sarah Banks</td>
-                                <td>
-                                    <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                            class="avatar avatar-xs pull-up" title="Lilian Fuller">
-                                            <img src="../assets/img/avatars/5.png" alt="Avatar"
-                                                class="rounded-circle" />
-                                        </li>
-                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                            class="avatar avatar-xs pull-up" title="Sophia Wilkerson">
-                                            <img src="../assets/img/avatars/6.png" alt="Avatar"
-                                                class="rounded-circle" />
-                                        </li>
-                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                            class="avatar avatar-xs pull-up" title="Christina Parker">
-                                            <img src="../assets/img/avatars/7.png" alt="Avatar"
-                                                class="rounded-circle" />
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td><span class="badge rounded-pill bg-label-danger me-1">Active</span></td>
-                                <td>ini</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="mdi mdi-dots-vertical"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="mdi mdi-pencil-outline me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            @endforeach
 
+                            @php
+                                $i++;
+                            @endphp
                         </tbody>
                     </table>
                 </div>
