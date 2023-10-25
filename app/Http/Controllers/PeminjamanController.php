@@ -47,7 +47,7 @@ class PeminjamanController extends Controller
         PeminjamanMobil::create([
             'user_id' => auth()->user()->id,
             'mobil_id' => $request->id_mobil,
-            'awal_peminjaman' => now()->format('Y-m-d'),
+            'awal_peminjaman' => $request->akhir_peminjaman,
             'akhir_peminjaman' => $request->durasi_peminjaman,
             'perihal' => $request->perihal,
             'surat_LDP' => $nama_gambar

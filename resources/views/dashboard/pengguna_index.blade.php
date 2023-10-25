@@ -52,28 +52,34 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="basic-default-phone">Durasi
-                                        Peminjaman</label>
+                                    <label class="col-sm-2 col-form-label" for="basic-default-phone">Awal Peminjam</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="date" id="html5-date-input"
                                             name="durasi_peminjaman" required />
                                     </div>
                                 </div>
                                 <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="basic-default-phone">Akhir Peminjam</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="date" id="html5-date-input"
+                                            name="akhir_peminjaman" required />
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" for="basic-default-email">Surat LDP</label>
                                     <div class="col-sm-10">
                                         <div class="mb-3">
-                                            <label for="formFile" class="form-label">Surat LDP .pdf , .jpg</label>
+                                            <label for="formFile" class="form-label">Surat .jpg, .png, .jpeg</label>
                                             <input class="form-control" type="file" id="formFile" required
-                                                name="surat_ldp" />
+                                                name="surat_ldp" accept=".png, .jpg, .jpeg"  />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" for="basic-default-message">Perihal</label>
                                     <div class="col-sm-10">
-                                        <textarea id="basic-default-message" class="form-control" placeholder="Hi, Do you have a moment to talk Joe?" required
-                                            aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2" name="perihal"></textarea>
+                                        <textarea id="basic-default-message" class="form-control" placeholder="" required
+                                            aria-label="" aria-describedby="basic-icon-default-message2" name="perihal"></textarea>
                                     </div>
                                 </div>
                                 <div class="row justify-content-end">

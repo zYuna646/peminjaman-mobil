@@ -90,26 +90,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <h6 class="mb-0">John Doe</h6>
-                                                    <small class="text-muted">Admin</small>
-                                                </div>
+                                                    <h6 class="mb-0">{{ Auth::user()->name }}</h6>
+                                                    <small class="text-muted">{{ Auth::user()->role === 'admin' ? 'Admin' : 'pengguna' }}</small>
+                                                </div>                                                
                                             </div>
                                         </a>
                                     </li>
                                     <li>
                                         <div class="dropdown-divider my-1"></div>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="mdi mdi-account-outline me-1 mdi-20px"></i>
-                                            <span class="align-middle">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="mdi mdi-cog-outline me-1 mdi-20px"></i>
-                                            <span class="align-middle">Settings</span>
-                                        </a>
                                     </li>
                                     <li>
                                         <div class="dropdown-divider my-1"></div>
